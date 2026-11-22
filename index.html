@@ -6,19 +6,30 @@
 <title>Gästehandbuch Fellbach</title>
 <meta name="description" content="Gästehandbuch für das Appartement von Anita &amp; Johannes in Fellbach.">
 <meta name="robots" content="noindex, nofollow">
-<link rel="alternate" hreflang="en" href="en.html">
 <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
 
 <div class="langpick" id="langpick" role="dialog" aria-modal="true" aria-labelledby="lp-title">
   <div class="box">
-    <h2 id="lp-title">Willkommen · Welcome</h2>
-    <p>Bitte Sprache wählen · Please choose your language</p>
-    <a href="index.html" data-setlang="de">🇩🇪 Deutsch</a>
-    <a href="en.html" data-setlang="en">🇬🇧 English</a>
+    <h2 id="lp-title">Willkommen · Welcome · Bienvenue</h2>
+    <p>Sprache wählen · Choose your language</p>
+    <div class="langlist"></div>
   </div>
 </div>
+
+<section class="cover" aria-hidden="true">
+  <div class="cover-top">
+    <h1>Gästehandbuch</h1>
+    <p class="cover-sub">Appartement von Anita &amp; Johannes · Bruckstraße 22/1 · 70734 Fellbach</p>
+  </div>
+  <img class="cover-img" src="assets/ausblick.jpg" alt="">
+  <p class="cover-times">Check-in ab 17:00 Uhr · Check-out bis 11:00 Uhr</p>
+  <div class="cover-qr">
+    <div><img src="assets/qr-wlan.svg" alt=""><strong>WLAN</strong><span>Scannen &amp; verbinden</span><small>FRITZ!Box Gastzugang · #Fellbach1309</small></div>
+    <div><img src="assets/qr-online.svg" alt=""><strong>Online-Version</strong><span>Immer aktuell · in 9 Sprachen</span><small>fammarek.github.io/Airbnb</small></div>
+  </div>
+</section>
 
 <header class="hero">
   <div class="hero-inner">
@@ -39,7 +50,7 @@
     <li><a href="#unterwegs">Bus &amp; Bahn</a></li>
     <li><a href="#abreise">Abreise</a></li>
     <li><a href="#kontakt">Notfall</a></li>
-    <li><a class="lang" href="en.html" data-setlang="en" hreflang="en">EN</a></li>
+    <li><a class="lang" href="#langpick" data-openlang>🌐 DE</a></li>
   </ul>
 </nav>
 </div>
@@ -55,7 +66,7 @@
       <div class="tile"><div class="label">Türcode</div><div class="value">in der Airbnb-App</div></div>
       <div class="tile"><div class="label">Notfall</div><div class="value"><a href="tel:112">112</a> · <a href="#kontakt">Kontakt</a></div></div>
     </div>
-    <a class="btn secondary no-print" href="gaestehandbuch.pdf" download>📄 Als PDF herunterladen</a>
+    <a class="btn secondary no-print" href="guide-de.pdf" download>📄 Als PDF herunterladen</a>
   </section>
 
   <!-- ANKOMMEN -->
@@ -127,8 +138,7 @@
     <ul>
       <li><strong>Heizung &amp; Lüften:</strong> Die Heizkörper regelt ihr am Thermostat (Stufe 3 ≈ 20 °C). Im Winter bitte kurz und kräftig lüften (Fenster 5 Minuten ganz öffnen) statt dauerhaft kippen.</li>
       <li><strong>Kaffee:</strong> Für euren Morgenkaffee steht eine Senseo-Maschine bereit. Ein paar Pads zum Start legen wir euch meist hin – für längere Aufenthalte nehmt euch am besten eine Packung beim Einkaufen mit (gibt es in jedem Supermarkt).</li>
-      <li><strong>Müll:</strong> Bitte trennt euren Müll und bringt ihn in die Tonnen <strong>vorne an der Bruckstraße, links neben dem Haus</strong> (rotes Kreuz). Gelb = Verpackungen, Blau = Papier, Schwarz = Restmüll. <a href="https://www.google.com/maps/search/?api=1&amp;query=48.813278%2C9.279861" target="_blank" rel="noopener">Standort in Google Maps ↗</a>
-        <figure class="small"><a href="assets/muell-standort.jpg" target="_blank"><img src="assets/muell-standort.jpg" alt="Luftbild: Die Mülltonnen stehen vorne an der Bruckstraße links neben dem Haus, markiert mit rotem Kreuz" loading="lazy"></a><figcaption>Standort der Mülltonnen (rotes Kreuz)</figcaption></figure></li>
+      <li><strong>Müll:</strong> Euren Müll könnt ihr bei der Abreise einfach in der Wohnung lassen – wir kümmern uns darum.</li>
       <li><strong>Sonntags</strong> haben in Deutschland alle Supermärkte geschlossen – am besten samstags einkaufen.</li>
     </ul>
   </section>
@@ -332,7 +342,6 @@
     <p>Check-out bis <strong>11:00 Uhr</strong>. Bevor ihr geht, bitte kurz:</p>
     <div class="checklist">
       <label><input type="checkbox"> Geschirr abspülen bzw. in die Spülmaschine stellen</label>
-      <label><input type="checkbox"> Müll entsorgen</label>
       <label><input type="checkbox"> Fenster schließen, Heizung herunterdrehen, Licht aus</label>
       <label><input type="checkbox"> Haustür hinter euch zuziehen und prüfen, dass sie wirklich zu ist (Falle!)</label>
     </div>

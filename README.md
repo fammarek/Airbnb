@@ -1,15 +1,15 @@
 # Gästehandbuch – Appartement Fellbach
 
-Online-Gästeleitfaden (Deutsch/Englisch) mit PDF-Version zum Ausdrucken.
+Online-Gästeleitfaden in 9 Sprachen mit PDF-Version (DE/EN) zum Ausdrucken.
 
 - **Website:** https://fammarek.github.io/Airbnb/ (GitHub Pages, Branch `main`, Ordner `/`)
-- `index.html` – Deutsch · `en.html` – Englisch (Sprachauswahl beim ersten Aufruf)
-- `gaestehandbuch.pdf` / `guest-guide.pdf` – Druckversionen
-- `assets/` – Bilder, `style.css`, `app.js`
+- Sprachen: `index.html` (Deutsch), `en.html`, `fr.html`, `it.html`, `cs.html`, `sk.html`, `pl.html`, `hr.html`, `zh.html` – Sprachauswahl beim ersten Aufruf, wird im Browser gespeichert (`assets/app.js`)
+- `guide-de.pdf` / `guide-en.pdf` – Druckversionen mit Deckblatt und QR-Codes (WLAN + Online-Version)
+- `assets/` – Bilder, QR-Codes, `style.css`, `app.js`
 
 ## Inhalte ändern
 
-Texte direkt in `index.html` **und** `en.html` anpassen. Gelb markierte Stellen (`class="gap"`) sind noch offene Angaben.
+Texte in **allen** Sprachdateien anpassen (gleiche Struktur, gleiche Abschnitts-IDs).
 
 ## PDFs neu erzeugen
 
@@ -19,5 +19,6 @@ node scripts/build-pdf.js
 
 ## Veranstaltungen
 
-Der Block zwischen `<!-- EVENTS:START -->` und `<!-- EVENTS:END -->` wird monatlich automatisch aktualisiert
-(vergangene Termine raus, neue Termine für die nächsten ~3 Monate rein, PDFs neu erzeugen, Push auf `main`).
+Der Block zwischen `<!-- EVENTS:START -->` und `<!-- EVENTS:END -->` wird monatlich automatisch in allen
+9 Sprachdateien aktualisiert (vergangene Termine raus, neue Termine für die nächsten ~3 Monate rein,
+PDFs neu erzeugen, Push auf `main`).

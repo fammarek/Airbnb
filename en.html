@@ -6,19 +6,30 @@
 <title>Guest Guide Fellbach</title>
 <meta name="description" content="Guest guide for Anita &amp; Johannes' apartment in Fellbach near Stuttgart.">
 <meta name="robots" content="noindex, nofollow">
-<link rel="alternate" hreflang="de" href="index.html">
 <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
 
 <div class="langpick" id="langpick" role="dialog" aria-modal="true" aria-labelledby="lp-title">
   <div class="box">
-    <h2 id="lp-title">Willkommen · Welcome</h2>
-    <p>Bitte Sprache wählen · Please choose your language</p>
-    <a href="index.html" data-setlang="de">🇩🇪 Deutsch</a>
-    <a href="en.html" data-setlang="en">🇬🇧 English</a>
+    <h2 id="lp-title">Willkommen · Welcome · Bienvenue</h2>
+    <p>Sprache wählen · Choose your language</p>
+    <div class="langlist"></div>
   </div>
 </div>
+
+<section class="cover" aria-hidden="true">
+  <div class="cover-top">
+    <h1>Guest Guide</h1>
+    <p class="cover-sub">Anita &amp; Johannes’ apartment · Bruckstraße 22/1 · 70734 Fellbach</p>
+  </div>
+  <img class="cover-img" src="assets/ausblick.jpg" alt="">
+  <p class="cover-times">Check-in from 5:00 pm · Check-out by 11:00 am</p>
+  <div class="cover-qr">
+    <div><img src="assets/qr-wlan.svg" alt=""><strong>Wi-Fi</strong><span>Scan to connect</span><small>FRITZ!Box Gastzugang · #Fellbach1309</small></div>
+    <div><img src="assets/qr-online.svg" alt=""><strong>Online version</strong><span>Always up to date · in 9 languages</span><small>fammarek.github.io/Airbnb</small></div>
+  </div>
+</section>
 
 <header class="hero">
   <div class="hero-inner">
@@ -39,7 +50,7 @@
     <li><a href="#unterwegs">Public transport</a></li>
     <li><a href="#abreise">Departure</a></li>
     <li><a href="#kontakt">Emergency</a></li>
-    <li><a class="lang" href="index.html" data-setlang="de" hreflang="de">DE</a></li>
+    <li><a class="lang" href="#langpick" data-openlang>🌐 EN</a></li>
   </ul>
 </nav>
 </div>
@@ -55,7 +66,7 @@
       <div class="tile"><div class="label">Door code</div><div class="value">in the Airbnb app</div></div>
       <div class="tile"><div class="label">Emergency</div><div class="value"><a href="tel:112">112</a> · <a href="#kontakt">Contact</a></div></div>
     </div>
-    <a class="btn secondary no-print" href="guest-guide.pdf" download>📄 Download as PDF</a>
+    <a class="btn secondary no-print" href="guide-en.pdf" download>📄 Download as PDF</a>
   </section>
 
   <!-- ARRIVAL -->
@@ -127,8 +138,7 @@
     <ul>
       <li><strong>Heating &amp; airing:</strong> Adjust the radiators with the thermostat knob (setting 3 ≈ 20 °C). In winter, please air the rooms briefly but fully (open the window wide for 5 minutes) instead of leaving it tilted.</li>
       <li><strong>Coffee:</strong> There is a Senseo machine for your morning coffee. We usually leave a few pads to get you started – for longer stays, best pick up a pack when shopping (available in every supermarket).</li>
-      <li><strong>Rubbish:</strong> Please separate your rubbish and take it to the bins <strong>at the front on Bruckstraße, to the left of the house</strong> (red cross). Yellow = packaging, blue = paper, black = general waste. Thank you for helping! <a href="https://www.google.com/maps/search/?api=1&amp;query=48.813278%2C9.279861" target="_blank" rel="noopener">Location in Google Maps ↗</a>
-        <figure class="small"><a href="assets/muell-standort.jpg" target="_blank"><img src="assets/muell-standort.jpg" alt="Aerial view: the bins are at the front on Bruckstraße to the left of the house, marked with a red cross" loading="lazy"></a><figcaption>Location of the bins (red cross)</figcaption></figure></li>
+      <li><strong>Rubbish:</strong> You can simply leave your rubbish in the apartment when you leave – we’ll take care of it.</li>
       <li><strong>On Sundays</strong> all supermarkets in Germany are closed – best to shop on Saturday.</li>
     </ul>
   </section>
@@ -332,7 +342,6 @@
     <p>Check-out by <strong>11:00 am</strong>. Before you leave, please:</p>
     <div class="checklist">
       <label><input type="checkbox"> Wash the dishes or put them in the dishwasher</label>
-      <label><input type="checkbox"> Take out the rubbish</label>
       <label><input type="checkbox"> Close the windows, turn down the heating, lights off</label>
       <label><input type="checkbox"> Pull the front door shut and check that it is really closed (latch!)</label>
     </div>
