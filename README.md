@@ -2,7 +2,7 @@
 
 Online-Gästeleitfaden (Deutsch/Englisch) mit PDF-Version zum Ausdrucken.
 
-- **Website:** https://fammarek.github.io/airbnb/ (GitHub Pages, Branch `main`, Ordner `/`)
+- **Website:** https://fammarek.github.io/Airbnb/ (GitHub Pages, Branch `main`, Ordner `/`)
 - `index.html` – Deutsch · `en.html` – Englisch (Sprachauswahl beim ersten Aufruf)
 - `gaestehandbuch.pdf` / `guest-guide.pdf` – Druckversionen
 - `assets/` – Bilder, `style.css`, `app.js`
