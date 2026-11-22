@@ -194,6 +194,8 @@ body.wz-open { overflow: hidden; }
 .print-only { display: none; }
 .qr-hint { display: none; font-size: .9rem; color: var(--muted); margin: 0 0 8px; }
 
+.print-qr { display: none; }
+
 /* Deckblatt (nur im Druck/PDF) */
 .cover { display: none; }
 
@@ -251,7 +253,7 @@ body.wz-open { overflow: hidden; }
   /* Seitenaufteilung: Header/Fußzeile kommen aus scripts/build-pdf.js */
   @page { size: A4; margin: 20mm 13mm 15mm; }
   html { font-size: 12px; }
-  #unterwegs { break-before: page; }
+  #veranstaltungen, #unterwegs { break-before: page; }
   #veranstaltungen > h2 { margin-top: 6mm; }
   #einkaufen > h2, #tipps > h2 { margin-top: 6mm; }
   #abreise, #kontakt { break-inside: avoid; }
@@ -286,7 +288,11 @@ body.wz-open { overflow: hidden; }
   .place-ph { display: none !important; }
   /* weniger Farbe beim Drucken */
   .tile, .note { background: #fff !important; border: 1px solid var(--accent); }
-  #unterwegs figure img { max-height: 95mm; }
+  .print-qr { display: flex !important; flex-direction: column; align-items: center; justify-content: center; gap: 1mm;
+              border: 1.5px solid var(--accent); border-radius: 3mm; padding: 4mm; max-width: 60mm; margin-left: auto; }
+  .print-qr img { width: 32mm; height: 32mm; }
+  .print-qr strong { color: var(--accent); font-size: 1.15rem; }
+  .print-qr small { color: var(--muted); }
 
   /* kompakter, damit keine fast leeren Seiten entstehen */
   html { font-size: 11.2px; }
