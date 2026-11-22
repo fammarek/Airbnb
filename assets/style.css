@@ -109,6 +109,7 @@ figure.small { max-width: 320px; margin: 8px 0 4px; }
   .place img { aspect-ratio: 16 / 7; height: auto; min-height: 0; }
   .place .body { padding: 10px 12px 12px; }
 }
+.place.noimg { grid-template-columns: 1fr; border-left: 4px solid var(--accent-soft); }
 .stars { color: var(--star); font-weight: 600; font-size: .86rem; }
 .stars span { color: var(--muted); font-weight: 400; }
 
