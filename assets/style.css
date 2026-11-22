@@ -110,6 +110,9 @@ figure.small { max-width: 320px; margin: 8px 0 4px; }
   .place .body { padding: 10px 12px 12px; }
 }
 .place.noimg { grid-template-columns: 1fr; border-left: 4px solid var(--accent-soft); }
+.place .qr { display: none; }
+.place-ph { display: grid; place-items: center; font-size: 2rem; background: var(--accent-soft); min-height: 78px; }
+@media (min-width: 640px) { .place-ph { aspect-ratio: 16 / 7; min-height: 0; } }
 .stars { color: var(--star); font-weight: 600; font-size: .86rem; }
 .stars span { color: var(--muted); font-weight: 400; }
 
@@ -188,6 +191,8 @@ footer { text-align: center; color: var(--muted); padding: 8px 16px 40px; font-s
 .wz-next { background: var(--accent); color: var(--on-accent); border: 0; }
 body.wz-open { overflow: hidden; }
 
+.qr-hint { display: none; font-size: .9rem; color: var(--muted); margin: 0 0 8px; }
+
 /* Deckblatt (nur im Druck/PDF) */
 .cover { display: none; }
 
@@ -198,7 +203,7 @@ body.wz-open { overflow: hidden; }
           --accent-soft: #f5e6e7; --line: #ddd; --gap: #fff0a6; --star: #8a6200; }
   html { font-size: 11.5px; }
   .navwrap, .no-print, .tabs, .langpick, .hero, #ankommen { display: none !important; }
-  .cover { display: flex !important; flex-direction: column; height: 268mm; break-after: page; text-align: center; }
+  .cover { display: flex !important; flex-direction: column; height: 255mm; break-after: page; text-align: center; }
   .cover-top { padding-top: 6mm; }
   .cover h1 { font-size: 3rem; margin: 0; color: var(--accent); }
   .cover-sub { font-size: 1.15rem; color: var(--muted); margin: 4px 0 0; }
@@ -241,4 +246,36 @@ body.wz-open { overflow: hidden; }
   .tip { margin-bottom: 8px; }
   a { color: inherit; text-decoration: none; }
   * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+
+  /* Seitenaufteilung: Header/Fußzeile kommen aus scripts/build-pdf.js */
+  @page { size: A4; margin: 20mm 13mm 15mm; }
+  html { font-size: 12px; }
+  #einkaufen, #tipps, #veranstaltungen, #abreise { break-before: page; }
+  #unterwegs { break-inside: avoid; }
+  #einkaufen h3:nth-of-type(3) { break-before: page; }
+
+  h2 { font-size: 1.55rem; color: var(--accent); border-bottom-width: 3px; margin-bottom: 10px; }
+  h3 { font-size: 1.15rem; margin: 14px 0 8px; }
+  section { margin-bottom: 16px; }
+
+  /* Orts-Karten: Bild | Infos | QR-Code zur Navigation */
+  .places { grid-template-columns: 1fr 1fr; gap: 3mm; }
+  .place { grid-template-columns: 28mm 1fr; align-items: stretch; border: 1px solid var(--line); border-radius: 3mm; }
+  .place > img, .place-ph { display: block; width: 28mm; height: 100%; min-height: 24mm; object-fit: cover; aspect-ratio: auto; }
+  .place-ph { display: grid; font-size: 2.2rem; }
+  .place .body { display: grid; grid-template-columns: 1fr 19mm; column-gap: 2mm; align-content: center; padding: 2mm 2mm 2mm 3mm; }
+  .place .body > * { grid-column: 1; }
+  .place .body img.qr { display: block; grid-column: 2; grid-row: 1 / span 6; align-self: center; width: 19mm; height: 19mm; }
+  .place strong { font-size: 1.05rem; line-height: 1.25; }
+  .place .meta { font-size: .85rem; line-height: 1.35; }
+  .qr-hint { display: block !important; }
+
+  /* kompakter, damit keine fast leeren Seiten entstehen */
+  html { font-size: 11.2px; }
+  .panel { columns: 2; column-gap: 7mm; }
+  .panel .panel-title { column-span: all; }
+  .tip { break-inside: avoid; margin-bottom: 4mm; }
+  .events li { padding: 5px 0; grid-template-columns: 30mm 1fr; }
+  #unterwegs figure img { max-height: 70mm; width: auto; margin: 0 auto; }
+  #kontakt { break-inside: avoid; }
 }
