@@ -1,10 +1,10 @@
 # Gästehandbuch – Appartement Fellbach
 
-Online-Gästeleitfaden in 9 Sprachen mit PDF-Version (DE/EN) zum Ausdrucken.
+Online-Gästeleitfaden in 9 Sprachen mit zweisprachiger PDF-Version (DE/EN) zum Ausdrucken.
 
 - **Website:** https://fammarek.github.io/Airbnb/ (GitHub Pages, Branch `main`, Ordner `/`)
 - Sprachen: `index.html` (Deutsch), `en.html`, `fr.html`, `it.html`, `cs.html`, `sk.html`, `pl.html`, `hr.html`, `zh.html` – Sprachauswahl beim ersten Aufruf, wird im Browser gespeichert (`assets/app.js`)
-- `guide-de.pdf` / `guide-en.pdf` – Druckversionen mit Deckblatt und QR-Codes (WLAN + Online-Version)
+- `guide.pdf` – zweisprachige Druckversion (Deckblatt mit QR-Codes für WLAN + Online-Version, dann Deutsch, dann Englisch)
 - `assets/` – Bilder, QR-Codes, `style.css`, `app.js`
 
 ## Inhalte ändern
