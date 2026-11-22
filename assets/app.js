@@ -43,6 +43,84 @@
     a.addEventListener('click', function (ev) { ev.preventDefault(); if (picker) picker.classList.add('show'); });
   });
 
+  // Check-in-Assistent: führt Schritt für Schritt (Bild + Text) durch den Check-in
+  var WZ = {
+    de: ['Schritt', 'von', '← Zurück', 'Weiter →', 'Fertig ✓', 'Schließen'],
+    en: ['Step', 'of', '← Back', 'Next →', 'Done ✓', 'Close'],
+    fr: ['Étape', 'sur', '← Retour', 'Suivant →', 'Terminé ✓', 'Fermer'],
+    it: ['Passo', 'di', '← Indietro', 'Avanti →', 'Fatto ✓', 'Chiudi'],
+    cs: ['Krok', 'z', '← Zpět', 'Další →', 'Hotovo ✓', 'Zavřít'],
+    sk: ['Krok', 'z', '← Späť', 'Ďalej →', 'Hotovo ✓', 'Zavrieť'],
+    pl: ['Krok', 'z', '← Wstecz', 'Dalej →', 'Gotowe ✓', 'Zamknij'],
+    hr: ['Korak', 'od', '← Natrag', 'Dalje →', 'Gotovo ✓', 'Zatvori'],
+    zh: ['第', '步，共', '← 上一步', '下一步 →', '完成 ✓', '关闭']
+  }[page] || ['Step', 'of', '← Back', 'Next →', 'Done ✓', 'Close'];
+  var wzBtn = document.querySelector('[data-wizard]');
+  if (wzBtn) {
+    var slides = [];
+    document.querySelectorAll('#ankommen .steps > li').forEach(function (li) {
+      var text = li.querySelector('.step-text');
+      slides.push({
+        imgs: Array.prototype.map.call(li.querySelectorAll('.step-pics img'), function (i) { return i.getAttribute('src'); }),
+        html: text ? text.innerHTML : li.innerHTML
+      });
+    });
+    var note = document.querySelector('#ankommen .note');
+    if (note) slides.push({ imgs: [], html: note.innerHTML });
+
+    var wz = document.createElement('div');
+    wz.className = 'wizard';
+    wz.setAttribute('role', 'dialog');
+    wz.setAttribute('aria-modal', 'true');
+    wz.innerHTML = '<div class="wz-head"><span class="wz-count"></span><button class="wz-close" type="button" aria-label="' + WZ[5] + '">×</button></div>' +
+      '<div class="wz-bar"><span></span></div>' +
+      '<div class="wz-body"><div class="wz-pics"></div><div class="wz-text"></div></div>' +
+      '<div class="wz-foot"><button class="wz-prev" type="button">' + WZ[2] + '</button><button class="wz-next" type="button"></button></div>';
+    document.body.appendChild(wz);
+    var cur = 0;
+    var q = function (s) { return wz.querySelector(s); };
+    function render() {
+      var s = slides[cur];
+      q('.wz-count').textContent = page === 'zh' ? WZ[0] + ' ' + (cur + 1) + ' ' + WZ[1] + ' ' + slides.length + ' 步' : WZ[0] + ' ' + (cur + 1) + ' ' + WZ[1] + ' ' + slides.length;
+      q('.wz-bar span').style.width = ((cur + 1) / slides.length * 100) + '%';
+      var pics = q('.wz-pics');
+      pics.innerHTML = '';
+      pics.className = 'wz-pics' + (s.imgs.length === 1 ? ' single' : '');
+      pics.style.display = s.imgs.length ? '' : 'none';
+      s.imgs.forEach(function (src) { var im = document.createElement('img'); im.src = src; im.alt = ''; pics.appendChild(im); });
+      q('.wz-text').innerHTML = s.html;
+      q('.wz-prev').disabled = cur === 0;
+      q('.wz-next').textContent = cur === slides.length - 1 ? WZ[4] : WZ[3];
+      q('.wz-body').scrollTop = 0;
+    }
+    function go(d) {
+      if (cur + d >= slides.length) return close();
+      cur = Math.max(0, cur + d);
+      render();
+    }
+    function open() { cur = 0; render(); wz.classList.add('show'); document.body.classList.add('wz-open'); q('.wz-next').focus(); }
+    function close() { wz.classList.remove('show'); document.body.classList.remove('wz-open'); wzBtn.focus(); }
+    wzBtn.addEventListener('click', open);
+    q('.wz-close').addEventListener('click', close);
+    q('.wz-prev').addEventListener('click', function () { go(-1); });
+    q('.wz-next').addEventListener('click', function () { go(1); });
+    document.addEventListener('keydown', function (e) {
+      if (!wz.classList.contains('show')) return;
+      if (e.key === 'Escape') close();
+      if (e.key === 'ArrowRight') go(1);
+      if (e.key === 'ArrowLeft') go(-1);
+    });
+    // Wischen auf dem Handy
+    var x0 = null;
+    q('.wz-body').addEventListener('touchstart', function (e) { x0 = e.touches[0].clientX; }, { passive: true });
+    q('.wz-body').addEventListener('touchend', function (e) {
+      if (x0 === null) return;
+      var dx = e.changedTouches[0].clientX - x0;
+      if (Math.abs(dx) > 60) go(dx < 0 ? 1 : -1);
+      x0 = null;
+    });
+  }
+
   // WLAN-Passwort kopieren
   var copy = document.getElementById('copy-wifi');
   if (copy) {

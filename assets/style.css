@@ -155,6 +155,38 @@ footer { text-align: center; color: var(--muted); padding: 8px 16px 40px; font-s
               font-size: 1rem; color: var(--accent); border: 1.5px solid var(--accent); }
 .langpick a.current { background: var(--accent); color: var(--on-accent); }
 
+
+/* Schritte mit Fotos direkt beim Text */
+.steps li { padding-bottom: 18px; }
+.step-pics { display: flex; gap: 8px; margin-top: 8px; }
+.step-pics figure { margin: 0; flex: 0 1 200px; min-width: 0; }
+.step-pics figure.wide { flex: 1 1 100%; max-width: 520px; }
+.step-pics img { width: 100%; aspect-ratio: 3 / 4; object-fit: cover; }
+.step-pics figure.wide img { aspect-ratio: auto; }
+.step-pics figcaption { font-size: .8rem; }
+.wizard-btn { font-size: 1.02rem; padding: 11px 18px; font-weight: 650; }
+
+/* Check-in-Assistent (Vollbild) */
+.wizard { position: fixed; inset: 0; z-index: 90; background: var(--bg); display: none; flex-direction: column; }
+.wizard.show { display: flex; }
+.wz-head { display: flex; align-items: center; gap: 10px; padding: 12px 16px; border-bottom: 1px solid var(--line); background: var(--card); }
+.wz-count { font-weight: 650; font-size: .95rem; flex: 1; }
+.wz-close { border: 0; background: transparent; color: var(--text); font-size: 1.6rem; line-height: 1; cursor: pointer; padding: 4px 8px; }
+.wz-bar { height: 4px; background: var(--line); }
+.wz-bar span { display: block; height: 100%; background: var(--accent); transition: width .25s; }
+.wz-body { flex: 1; overflow-y: auto; padding: 14px 16px 8px; max-width: 640px; width: 100%; margin: 0 auto; }
+.wz-pics { display: flex; gap: 8px; margin-bottom: 14px; }
+.wz-pics img { flex: 1; min-width: 0; width: 100%; max-height: 48vh; object-fit: cover; border-radius: 12px; border: 1px solid var(--line); }
+.wz-pics.single img { object-fit: contain; background: var(--card); }
+.wz-text { font-size: 1.12rem; line-height: 1.55; }
+.wz-text .lockpics { max-width: 360px; }
+.wz-foot { display: flex; gap: 10px; padding: 12px 16px calc(12px + env(safe-area-inset-bottom)); border-top: 1px solid var(--line); background: var(--card); }
+.wz-foot button { flex: 1; padding: 14px; font-size: 1.05rem; font-weight: 650; border-radius: 12px; cursor: pointer; font-family: inherit; }
+.wz-prev { background: transparent; color: var(--accent); border: 1.5px solid var(--accent); }
+.wz-prev:disabled { opacity: .35; cursor: default; }
+.wz-next { background: var(--accent); color: var(--on-accent); border: 0; }
+body.wz-open { overflow: hidden; }
+
 /* Deckblatt (nur im Druck/PDF) */
 .cover { display: none; }
 
@@ -193,6 +225,11 @@ footer { text-align: center; color: var(--muted); padding: 8px 16px 40px; font-s
   .photos { grid-template-columns: repeat(6, 1fr); gap: 6px; }
   .photos figcaption { font-size: .75rem; }
   .lockpics { max-width: 260px; }
+  .wizard { display: none !important; }
+  .step-pics img { height: 42mm; width: auto; aspect-ratio: auto; }
+  .step-pics figure { flex: 0 0 auto; }
+  .step-pics figure.wide img { height: 48mm; }
+  .steps li { padding-bottom: 8px; }
   figure.small { max-width: 220px; }
   .place { grid-template-columns: 1fr; }
   .place img, .place a.map { display: none; }
