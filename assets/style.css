@@ -196,7 +196,7 @@ body.wz-open { overflow: hidden; }
   :root { --bg: #fff; --card: #fff; --text: #111; --muted: #555; --accent: #8c2f39; --on-accent: #fff;
           --accent-soft: #f5e6e7; --line: #ddd; --gap: #fff0a6; --star: #8a6200; }
   html { font-size: 11.5px; }
-  .navwrap, .no-print, .tabs, .langpick, .hero { display: none !important; }
+  .navwrap, .no-print, .tabs, .langpick, .hero, #ankommen { display: none !important; }
   .cover { display: flex !important; flex-direction: column; height: 268mm; break-after: page; text-align: center; }
   .cover-top { padding-top: 6mm; }
   .cover h1 { font-size: 3rem; margin: 0; color: var(--accent); }
