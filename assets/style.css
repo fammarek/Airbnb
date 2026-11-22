@@ -195,6 +195,7 @@ body.wz-open { overflow: hidden; }
 .qr-hint { display: none; font-size: .9rem; color: var(--muted); margin: 0 0 8px; }
 
 .print-qr { display: none; }
+.events-print { display: none; }
 
 /* Deckblatt (nur im Druck/PDF) */
 .cover { display: none; }
@@ -253,7 +254,16 @@ body.wz-open { overflow: hidden; }
   /* Seitenaufteilung: Header/Fußzeile kommen aus scripts/build-pdf.js */
   @page { size: A4; margin: 20mm 13mm 15mm; }
   html { font-size: 12px; }
-  #veranstaltungen, #unterwegs { break-before: page; }
+  #veranstaltungen { break-before: page; break-inside: avoid; }
+  .events-print { break-inside: avoid; }
+  #veranstaltungen .events, #veranstaltungen > .muted { display: none !important; }
+  .events-print { display: flex !important; align-items: center; gap: 8mm; }
+  .events-print p { flex: 1; font-size: 1.1rem; margin: 0; }
+  .events-print .print-qr { margin: 0; }
+  body > footer { display: none; }
+  .checklist label { padding: 1px 0; }
+  #veranstaltungen, #unterwegs, #abreise { margin-bottom: 8px; }
+  h2 { margin-top: 4mm; }
   #veranstaltungen > h2 { margin-top: 6mm; }
   #einkaufen > h2, #tipps > h2 { margin-top: 6mm; }
   #abreise, #kontakt { break-inside: avoid; }
@@ -289,8 +299,8 @@ body.wz-open { overflow: hidden; }
   /* weniger Farbe beim Drucken */
   .tile, .note { background: #fff !important; border: 1px solid var(--accent); }
   .print-qr { display: flex !important; flex-direction: column; align-items: center; justify-content: center; gap: 1mm;
-              border: 1.5px solid var(--accent); border-radius: 3mm; padding: 4mm; max-width: 60mm; margin-left: auto; }
-  .print-qr img { width: 32mm; height: 32mm; }
+              border: 1.5px solid var(--accent); border-radius: 3mm; padding: 2.5mm 4mm; max-width: 55mm; margin-left: auto; }
+  .print-qr img { width: 24mm; height: 24mm; }
   .print-qr strong { color: var(--accent); font-size: 1.15rem; }
   .print-qr small { color: var(--muted); }
 
