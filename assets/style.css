@@ -191,6 +191,7 @@ footer { text-align: center; color: var(--muted); padding: 8px 16px 40px; font-s
 .wz-next { background: var(--accent); color: var(--on-accent); border: 0; }
 body.wz-open { overflow: hidden; }
 
+.print-only { display: none; }
 .qr-hint { display: none; font-size: .9rem; color: var(--muted); margin: 0 0 8px; }
 
 /* Deckblatt (nur im Druck/PDF) */
@@ -250,9 +251,10 @@ body.wz-open { overflow: hidden; }
   /* Seitenaufteilung: Header/Fußzeile kommen aus scripts/build-pdf.js */
   @page { size: A4; margin: 20mm 13mm 15mm; }
   html { font-size: 12px; }
-  #einkaufen, #tipps, #veranstaltungen, #abreise { break-before: page; }
-  #unterwegs { break-inside: avoid; }
-  #einkaufen h3:nth-of-type(3) { break-before: page; }
+  #unterwegs { break-before: page; }
+  #veranstaltungen > h2 { margin-top: 6mm; }
+  #einkaufen > h2, #tipps > h2 { margin-top: 6mm; }
+  #abreise, #kontakt { break-inside: avoid; }
 
   h2 { font-size: 1.55rem; color: var(--accent); border-bottom-width: 3px; margin-bottom: 10px; }
   h3 { font-size: 1.15rem; margin: 14px 0 8px; }
@@ -265,10 +267,26 @@ body.wz-open { overflow: hidden; }
   .place-ph { display: grid; font-size: 2.2rem; }
   .place .body { display: grid; grid-template-columns: 1fr 19mm; column-gap: 2mm; align-content: center; padding: 2mm 2mm 2mm 3mm; }
   .place .body > * { grid-column: 1; }
-  .place .body img.qr { display: block; grid-column: 2; grid-row: 1 / span 6; align-self: center; width: 19mm; height: 19mm; }
+  .place .body img.qr { display: block; grid-column: 2; grid-row: 1 / span 6; align-self: center; width: 21mm; height: 21mm; }
+  .place .body { grid-template-columns: 1fr 21mm; }
   .place strong { font-size: 1.05rem; line-height: 1.25; }
   .place .meta { font-size: .85rem; line-height: 1.35; }
   .qr-hint { display: block !important; }
+  .screen-only { display: none !important; }
+  .print-only { display: inline !important; }
+
+  /* einheitliche Typografie im Druck */
+  html { font-size: 12.5px; }
+  body { font-size: 1rem; line-height: 1.45; }
+  .tip .meta, .events .where, .place .meta { display: block; font-size: .88rem; line-height: 1.35; margin-top: 1mm; }
+  .tip p { margin: 1mm 0; }
+  .muted { font-size: .9rem; }
+  /* Karten ohne Foto: keine Platzhalter-Kachel im Druck */
+  .place:has(.place-ph) { grid-template-columns: 1fr; }
+  .place-ph { display: none !important; }
+  /* weniger Farbe beim Drucken */
+  .tile, .note { background: #fff !important; border: 1px solid var(--accent); }
+  #unterwegs figure img { max-height: 95mm; }
 
   /* kompakter, damit keine fast leeren Seiten entstehen */
   html { font-size: 11.2px; }

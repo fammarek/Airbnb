@@ -16,7 +16,7 @@ for f in FILES:
         name = hashlib.sha1(url.encode()).hexdigest()[:10] + '.svg'
         out = os.path.join(ROOT, 'assets', 'qr', name)
         if not os.path.exists(out):
-            segno.make(url, error='m').save(out, scale=1, border=1, dark='#2a2421', xmldecl=False, nl=False)
+            segno.make(url, error='m').save(out, scale=1, border=2, dark='#2a2421', xmldecl=False, nl=False)
         return m.group(1) + '<img class="qr" src="assets/qr/' + name + '" alt="">'
     t = card_re.sub(repl, t)
     open(path, 'w', encoding='utf-8').write(t)
