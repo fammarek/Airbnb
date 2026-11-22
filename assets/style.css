@@ -79,6 +79,15 @@ figure img { border-radius: 10px; border: 1px solid var(--line); }
 figcaption { font-size: .88rem; color: var(--muted); margin-top: 4px; }
 .two { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 14px; }
 
+
+/* Check-in-Fotos */
+.photos { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
+@media (min-width: 640px) { .photos { grid-template-columns: repeat(3, 1fr); } }
+.photos figure { margin: 0; }
+.photos img { width: 100%; aspect-ratio: 3 / 4; object-fit: cover; }
+.photos figcaption b { display: inline-grid; place-items: center; width: 20px; height: 20px; border-radius: 50%;
+                       background: var(--accent); color: var(--on-accent); font-size: .75rem; margin-right: 4px; }
+
 /* Orte: kompakte Zeilen auf dem Handy, Karten ab Tablet */
 .places { display: grid; grid-template-columns: 1fr; gap: 8px; }
 .place { border: 1px solid var(--line); border-radius: 12px; overflow: hidden; background: var(--card);
@@ -159,6 +168,8 @@ footer { text-align: center; color: var(--muted); padding: 8px 16px 40px; font-s
   figure { break-inside: avoid; margin: 6px 0; }
   .place, .tip, .events li, .tile, .note, .steps li { break-inside: avoid; }
   .places { grid-template-columns: repeat(3, 1fr); gap: 6px; }
+  .photos { grid-template-columns: repeat(6, 1fr); gap: 6px; }
+  .photos figcaption { font-size: .75rem; }
   .place { grid-template-columns: 1fr; }
   .place img, .place a.map { display: none; }
   .place .body { padding: 6px 8px; }
